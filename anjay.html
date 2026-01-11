@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>my princess</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #dcdcdc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* ================= HALAMAN AWAL ================= */
+    .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card {
+      background: white;
+      width: 260px;
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .card p {
+      opacity: 0.7;
+    }
+
+    /* ================= HALAMAN CATATAN ================= */
+    .paper {
+      display: none;
+      width: 90%;
+      max-width: 600px;
+      height: 80vh;
+      background:
+        repeating-linear-gradient(
+          white,
+          white 28px,
+          #b7d7ff 29px
+        );
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      font-size: 22px;
+      line-height: 29px;
+      color: #1e293b;
+      overflow-y: auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 26px;
+    }
+
+    .date {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+
+    .text {
+      white-space: pre-wrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HALAMAN AWAL -->
+  <div class="home" id="home">
+    <div class="card" onclick="openNote()">
+      <h2> dari akha ganteng buat princess nayla🤭💐</h2></h2>
+      <p>pencet ini yaaa</p>
+    </div>
+  </div>
+
+  <!-- HALAMAN CATATAN -->
+  <div class="paper" id="paper">
+    <div class="header">
+      <div class="title">Nayla’s Birthday🥳😱</div>
+      <div class="date">17 Januari 2026</div>
+    </div>
+
+    <div class="text" id="text"></div><span class="cursor">|</span>
+  </div>
+
+  <script>
+    const text = `
+haii bb, happy birthday sayangg, terimakasiii sudaa lahir suda mau bertahan sejauh ini, aku tau hidup kamu ga selalu mulus terus tapi kamu keren uda banyak ngelewatin hal yg mungkin orang lain gabisa lewatin, proud of u bb. di umur yang baru ini harus bisa jadi lebih dewasa ya? tapi ke aku mah kaya anak kecil aja. hidup lebih lama ya sayang? banyak mimpi yang harus kamu wujudin, kalo lagi ngerasa cape, sedih, atau apapun itu yg bikin kamu pengen nyerah liat ke aku ya? aku bakal usahain selalu ada buat kamu, bukan ke aku aja tapi ke temen' kamu juga, jangan selalu ngerasa sendiri yaa kecillll🤬🤬 IM HEREEE. makasih masih mau bertahan sejauh ini, sama aku, aku happy banget sama kamu sayang, terimakasih buat energi positif yang uda kamu kasi ke org' disekitar kamu yaa, terimakasih juga udaa mau berbagi kebahagiaan sayang, semoga dengan hal' baik yang uda kamu lakuin ke org lain berbalik ke kamu yaa, bb.
+semoga ke depannya, langkah kamu selalu dipeluk hal' baik, dan semoga kamu ga pernah lupa kalo kamu itu berharga, penting, dan disayang banyak orang, termasuk aku. happy birthday once again bb. stay healthy, and please stay with me yaa 🤍
+aku sayang kamu, banyak.
+    `;
+
+    let i = 0;
+    const speed = 60;
+
+    function openNote() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("paper").style.display = "block";
+      type();
+    }
+
+    function type() {
+      if (i < text.length) {
+        const textEl = document.getElementById("text");
+        const paper = document.getElementById("paper");
+
+        textEl.textContent += text.charAt(i);
+        paper.scrollTop = paper.scrollHeight;
+
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+  </script>
+
+</body>
+</html>
